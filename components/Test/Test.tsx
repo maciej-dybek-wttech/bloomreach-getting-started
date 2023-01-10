@@ -18,7 +18,7 @@ export function Test({component, page}: BrProps): React.ReactElement | null {
 
   const {Title} = component.getParameters<TestParameters>();
 
-  const {title: referencedTitle, content: content} = document?.getData<{ title: string }>() || {};
+  const {title: referencedTitle, content: content} = document?.getData<{ title: string, content: any }>() || {};
   const html = page.rewriteLinks(content);
 
   return (
@@ -28,7 +28,7 @@ export function Test({component, page}: BrProps): React.ReactElement | null {
       <BrManageContentButton content={document}/>
       {Title && <h3 className="mb-4">{Title}</h3>}
       {referencedTitle && <h4 className="mb-4">{referencedTitle}</h4>}
-      {content && <div dangerouslySetInnerHTML={{__html: html}}/>}
+      {/*{content && <div dangerouslySetInnerHTML={{__html: html}}/>}*/}
       {/*<div>*/}
       {/*  {content && <div dangerouslySetInnerHTML={{ __html: page.rewriteLinks(page.sanitize(content.value)) }} />}*/}
       {/*</div>*/}
